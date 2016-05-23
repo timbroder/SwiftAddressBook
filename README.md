@@ -28,12 +28,19 @@ Complete wrapper for the ABAddressBook C-Framework for iOS, written in Swift to 
   ```
   
   2. Use Addressbook: 
-    - Get array of all people and log their phone numbers)
+    - Get array of all people and log their phone numbers
       ```Swift
       if let people = swiftAddressBook?.allPeople {
           for person in people {
             NSLog("%@", person.phoneNumbers?.map( {$0.value} ))
           }
+      }
+      ```
+      
+    - Filter by people who have an email address
+      ```Swift
+      if let people = swiftAddressBook?.allPeople?.filter({ $0.emails?.count > 0 }) {
+          // do something with them
       }
       ```
       
